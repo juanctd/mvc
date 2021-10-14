@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/materialize.css' />
+    <link rel='stylesheet' href='.../stylesheets/style.css' />
+  </head>
+
+    <h4>Eliminar Usuarios</h4>
+    {% for users in users %}
+    <div class="row">
+        <form class="col s12" action="/users/delete" method="post" id="eliminar_users" name="eliminar_users">
+            <input type="hidden" name="id" value="{{users.id}}"> 
+            <div class="row">
+                <div class="input-field col s6">
+                <input placeholder="Placeholder" id="usuario" name="usuario" type="text" value="{{users.usuario}}" readonly>
+                <label class="active" for="usuario">Nombre Usuario</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                <input id="clave" name="clave" type="password" class="validate" value="{{users.clave}}" readonly>
+                <label class="active" for="password">Password</label>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="input-field col s6">
+                <button class="btn waves-effect waves-light" type="submit">Eliminar
+                    <i class="material-icons right">chevron_left</i>
+                </button>
+                <a class="waves-effect waves-light btn red" href="/users/listar"><i class="material-icons left">chevron_left</i>Cancelar</a>
+            </div>
+        </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/javascripts/materialize.js"></script>
+    <script src="/javascripts/init.js"></script>
+    
